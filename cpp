@@ -82,7 +82,7 @@ public:
 	{
 		return salary;
 	}
-	void display()
+	void display()override
 	{
 		person::display();
 		cout << "salary: " << salary << endl;
