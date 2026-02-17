@@ -84,6 +84,7 @@ public:
 	}
 	void display()override
 	{
+		cout << "Admin details: " << endl;
 		person::display();
 		cout << "salary: " << salary << endl;
 	}
@@ -109,6 +110,7 @@ public:
 	}
 
 	void display()override {
+		cout << "Employee details: " << endl;
 		person::display();
 		cout << "Salary: " << salary << endl;
 	}
@@ -165,6 +167,7 @@ public:
 	}
 	void display()override
 	{
+		cout << "Client details: " << endl;
 		person::display();
 		cout << "balance: " << balance << endl;
 		
