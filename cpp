@@ -89,11 +89,37 @@ public:
 	}
 
 };
+class Employee : public person {
+private:
+	double salary;
+
+public:
+	Employee(string n, int i, string p, double s) : person(n, i, p), salary(s) {}
+
+	bool setSalary(double salary) {
+		if (salary >= 5000) {
+			this->salary = salary;
+			return true;
+		}
+		return false;
+	}
+
+	double getSalary() {
+		return salary;
+	}
+
+	void display()override {
+		person::display();
+		cout << "Salary: " << salary << endl;
+	}
+};
 
 
 int main()
 {
- cout<<" Alhabib "<<endl;
+
+
+	
 
     return 0;
 }
