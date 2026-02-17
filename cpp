@@ -113,13 +113,70 @@ public:
 		cout << "Salary: " << salary << endl;
 	}
 };
+class client : public person {
+private:
+	double balance;
+public:
+	client(string n, int i, string p, double b) :person(n, i, p), balance(b) {}
+	void setBalance(double b)
+	{
+		if (balance >= 1500) {
+			balance = b;
+		}
+		else {
+			cout << "balance must be greater than or equal to 1500" << endl;
+		}
+	}
+	double getBalance()
+	{
+		return balance;
+	}
+	void deposit(double amount)
+	{
+		if (amount > 0) {
+			balance += amount;
+		}
+		else {
+			cout << "Deposit amount must be positive." << endl;
+		}
+	}
+	void withdraw(double amount)
+	{
+		if (amount > 0 && amount <= balance) {
+			balance -= amount;
+		}
+		else {
+			cout << "Invalid withdrawal amount." << endl;
+		}
+	}
+	void transfer(client& recipient, double amount)
+	{
+		if (amount > 0 && amount <= balance) {
+			balance -= amount;
+			recipient.deposit(amount);
+		}
+		else {
+			cout << "Invalid transfer " << endl;
+		}
+	}
+	void checkBalance()
+	{
+		cout << " balance: " << balance << endl;
+	}
+	void display()override
+	{
+		person::display();
+		cout << "balance: " << balance << endl;
+		
+	}
+};
 
 
 int main()
 {
 
 
-	
+
 
     return 0;
 }
