@@ -179,7 +179,7 @@ int main()
 {
 
 
-cout<<"kamal"<<endl;
+
 
     return 0;
 }
