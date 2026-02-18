@@ -15,7 +15,7 @@ int main()
 
 
 cout << "Welcome to the Banking System!" << endl;
-cout << "Please select your role: " << endl;
+
 
     return 0;
 }
