@@ -3,18 +3,21 @@
 #include<cmath>
 #include <fstream>
 #include <sstream>
+#include"Person.h"
+#include"Admin.h"
+#include"Employee.h"
+#include"Client.h"
+using namespace std;  
 
-using namespace std;    
-
-class person
+class Person
 {
-	protected:
+		protected:
 		string name;
 		int id;
 		string password;
 public:
 
-	person(string n, int i, string p) :name(n), id(i), password(p){}
+	Person(string n, int i, string p) :name(n), id(i), password(p){}
 	
 	void setname(string n)
 	{
@@ -64,13 +67,13 @@ public:
 	}
 };
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class Admin : public person
+
+class Admin : public Person
 {
 private:
 	double salary;
 public:
-	Admin(string n, int i, string p, double s) :person(n, i, p), salary(s) {}
+	Admin(string n, int i, string p, double s) :Person(n, i, p), salary(s) {}
 
 	void setSalary(double s)
 	{
@@ -88,18 +91,18 @@ public:
 	void display()override
 	{
 		cout << "Admin details: " << endl;
-		person::display();
+		Person::display();
 		cout << "salary: " << salary << endl;
 	}
 
 };
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class Employee : public person {
+
+class Employee : public Person {
 private:
 	double salary;
 
 public:
-	Employee(string n, int i, string p, double s) : person(n, i, p), salary(s) {}
+	Employee(string n, int i, string p, double s) : Person(n, i, p), salary(s) {}
 
 	bool setSalary(double salary) {
 		if (salary >= 5000) {
@@ -378,16 +381,15 @@ void add_client(int cl_id,string cl_name,string cl_pass,double cl_bal){
 
 	void display()override {
 		cout << "Employee details: " << endl;
-		person::display();
+		Person::display();
 		cout << "Salary: " << salary << endl;
 	}
 };
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class client : public person {
+class Client : public Person {
 private:
 	double balance;
 public:
-	client(string n, int i, string p, double b) :person(n, i, p), balance(b) {}
+	Client(string n, int i, string p, double b) :Person(n, i, p), balance(b) {}
 	void setBalance(double b)
 	{
 		if (balance >= 1500) {
@@ -464,7 +466,7 @@ public:
 			cout << "Invalid withdrawal amount." << endl;
 		}
 	}
-	void transfer(client& recipient, double amount)
+	void transfer(Client& recipient, double amount)
 	{
 		if (amount > 0 && amount <= balance) {
 			balance -= amount;
@@ -481,18 +483,20 @@ public:
 	void display()override
 	{
 		cout << "Client details: " << endl;
-		person::display();
+		Person::display();
 		cout << "balance: " << balance << endl;
 		
 	}
 };
 
 
+
 int main()
 {
 
 
-
+cout << "Welcome to the Banking System!" << endl;
+cout << "Please select your role: " << endl;
 
     return 0;
 }
