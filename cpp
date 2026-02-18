@@ -93,6 +93,7 @@ public:
 	}
 
 };
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class Employee : public person {
 private:
 	double salary;
@@ -111,6 +112,50 @@ public:
 	double getSalary() {
 		return salary;
 	}
+
+	// ================= LOGIN =================
+	static bool login_E(int employee_id, string employee_pass)
+	{
+		ifstream file("employees.txt");
+		if (!file.is_open())
+		{
+			cout << "Cannot open employee file!" << endl;
+			return false;
+		}
+
+		string line;
+
+		while (getline(file, line))
+		{
+
+			if (line.empty())
+				continue;
+
+			stringstream ss(line);
+			string id_str, name, pass, sal_str;
+
+			getline(ss, id_str, ',');
+			getline(ss, name, ',');
+			getline(ss, pass, ',');
+			getline(ss, sal_str, ',');
+
+			if (id_str.empty())
+				continue;
+
+			
+			if (stoi(id_str) == employee_id && pass == employee_pass)
+			{
+				cout << "Login successful. Welcome " << name << endl;
+				file.close();
+				return true;
+			}
+		}
+
+		file.close();
+		cout << "Invalid ID or Password." << endl;
+		return false;
+	}
+
 
 	void display()override {
 		cout << "Employee details: " << endl;
@@ -139,7 +184,7 @@ public:
 	}
 
  // ================= LOGIN =================
- static bool login(int client_id, string client_pass)
+ static bool login_c(int client_id, string client_pass)
  {
      ifstream file("clients.txt");
      if (!file.is_open())
