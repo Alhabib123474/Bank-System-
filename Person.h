@@ -12,6 +12,10 @@ protected:
 		int id;
 		string password;
 public:
+//============default const=========///
+	Person() {
+		id = 0;
+}
 
 	Person(string n, int i, string p) :name(n), id(i), password(p){}
 	
