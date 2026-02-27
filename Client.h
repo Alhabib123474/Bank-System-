@@ -10,6 +10,12 @@ class Client : public Person {
 private:
 	double balance;
 public:
+
+//========default const=====//
+	Client():Person(){
+		balance = 0;
+}
+
 	Client(string n, int i, string p, double b) :Person(n, i, p), balance(b) {}
 	void setBalance(double b)
 	{
