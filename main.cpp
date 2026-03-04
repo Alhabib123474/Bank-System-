@@ -16,6 +16,8 @@ int main()
 
 cout << "Welcome to the Banking System!" << endl;
 
+cout << "Best Banking System ever!" << endl;
+
 
     return 0;
 }
