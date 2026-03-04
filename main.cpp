@@ -14,7 +14,7 @@ int main()
 {
 
 
-cout << "Welcome << to the Banking System!" << endl;
+cout << "Welcome to the Banking System!" << endl;
 
 
     return 0;
