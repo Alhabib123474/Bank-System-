@@ -1,19 +1,46 @@
 #pragma once
-#include <iostream>
-#include <string>
-#include <fstream>
-#include <sstream>
-#include"Person.h"
-using namespace std;
+#include"Client.h"
+
+
+
 
 class Employee : public Person {
 private:
 	double salary;
 
 public:
-	Employee(string n, int i, string p, double s) : Person(n, i, p), salary(s) {}
 
-	bool setSalary(double salary) {
+//========default const=====//
+    Employee():Person(){
+        salary = 0;
+
+    }
+
+
+	Employee(int i,string n, string p, double s) : Person(i, n, p), salary(s) {}
+
+
+
+//======setters======//
+
+	void setid(int i){
+	    this->id = i;
+
+	}
+
+
+	void setname(string n){
+	    this->name = n;
+
+	}
+
+
+	void setpass(string p){
+	    this->password = p;
+	}
+
+
+	bool setsalary(double salary) {
 		if (salary >= 5000) {
 			this->salary = salary;
 			return true;
@@ -21,11 +48,15 @@ public:
 		return false;
 	}
 
+
 	double getSalary() {
 		return salary;
 	}
 
-	// ================= LOGIN =================
+
+
+
+/*	// ================= LOGIN =================
 	static bool login_E(int employee_id, string employee_pass)
 	{
 		ifstream file("employees.txt");
@@ -54,7 +85,7 @@ public:
 			if (id_str.empty())
 				continue;
 
-			
+
 			if (stoi(id_str) == employee_id && pass == employee_pass)
 			{
 				cout << "Login successful. Welcome " << name << endl;
@@ -67,6 +98,10 @@ public:
 		cout << "Invalid ID or Password." << endl;
 		return false;
 	}
+
+
+/*
+
 // ================= search client =================
 	bool search_client(int cl_id) {
 		ifstream file("clients.txt", ios::in);
@@ -79,7 +114,7 @@ public:
 
 		string line;
 		while (getline(file, line)) {
-			
+
 
 			stringstream ss(line);
 			string id_str, name, pass, bal_str;
@@ -101,7 +136,7 @@ public:
 				break;
 			}
 		}
-		
+
 
 		if (!found)
 			cout << "Client with ID " << cl_id << " not found." << endl;
@@ -116,7 +151,7 @@ public:
 // ================= List clients =================
 	void list_clients(){
 		ifstream file("clients.txt", ios::in);
-	
+
 		if (!file.is_open()) {
 			cout << "Error: Could not open file." << endl;
 			return;
@@ -137,7 +172,7 @@ public:
 
 			if (id_str.empty()) continue;
 
-			
+
 			cout << "ID: " << id_str <<". Name: " << name <<". Password: " << pass << ". Balance: " << bal_str << "." << endl;
 			cout << "-------------------" << endl;
 		}
@@ -145,7 +180,7 @@ public:
 		file.close();
 	}
 
-// ================= Add clients =================
+ // ================= Add clients =================
 
 void add_client(int cl_id,string cl_name,string cl_pass,double cl_bal){
 
@@ -165,9 +200,9 @@ void add_client(int cl_id,string cl_name,string cl_pass,double cl_bal){
 			}
 			list_clients();
 		}
-	
-	
-	
+
+
+
 }
 
 
@@ -283,9 +318,9 @@ void add_client(int cl_id,string cl_name,string cl_pass,double cl_bal){
 		}
 		else
 			cout << "Client not found." << endl;
-	} 
+	}
 
-
+*/
 
 
 	void display()override {

@@ -17,8 +17,8 @@ public:
 		id = 0;
 }
 
-	Person(string n, int i, string p) :name(n), id(i), password(p){}
-	
+	Person(int i, string n,  string p) : id(i),name(n),  password(p){}
+
 	void setname(string n)
 	{
 		if (name.length() >= 5 && name.length() <= 20) {

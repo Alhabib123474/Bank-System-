@@ -1,10 +1,5 @@
 #pragma once
-#include <iostream>
-#include <string>
-#include <fstream>
-#include <sstream>
 #include"Person.h"
-using namespace std;
 
 class Client : public Person {
 private:
@@ -16,20 +11,59 @@ public:
 		balance = 0;
 }
 
-	Client(string n, int i, string p, double b) :Person(n, i, p), balance(b) {}
+
+
+	Client(int i, string n, string p, double b) :Person(i, n, p), balance(b) {}
+
+
+
+//======setters====//
+
+
+
+	void setid(int i){
+	    this->id = i;
+
+	}
+
+
+	void setname(string n){
+	    this->name = n;
+
+	}
+
+
+	void setpass(string p){
+	    this->password = p;
+
+	}
+
 	void setBalance(double b)
 	{
-		if (balance >= 1500) {
-			balance = b;
+		if (b >= 1500) {
+			this->balance = b;
 		}
 		else {
 			cout << "balance must be greater than or equal to 1500" << endl;
 		}
 	}
+
+
+
+
+
+
+
 	double getBalance()
 	{
 		return balance;
 	}
+
+
+
+
+
+
 
  // ================= LOGIN =================
  static bool login_c(int client_id, string client_pass)
@@ -73,7 +107,7 @@ public:
  }
 
 
-
+//methods//
 
 	void deposit(double amount)
 	{
@@ -112,6 +146,6 @@ public:
 		cout << "Client details: " << endl;
 		Person::display();
 		cout << "balance: " << balance << endl;
-		
+
 	}
 };

@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1772996850 source:k:\project bank system\bank-system-\main.cpp
+	<iostream>
+	<string>
+	<cmath>
+	"Admin.h"
+	"Parser.h"
+
+1772996609 k:\project bank system\bank-system-\person.h
+	<iostream>
+	<string>
+	<fstream>
+	<sstream>
+
+1772996693 k:\project bank system\bank-system-\admin.h
+	<string>
+	"Employee.h"
+
+1772996631 k:\project bank system\bank-system-\employee.h
+	"Client.h"
+
+1772996622 k:\project bank system\bank-system-\client.h
+	"Person.h"
+
+1772997008 k:\project bank system\bank-system-\parser.h
+	"Employee.h"
+	"Admin.h"
+	<vector>
+	<fstream>
+	<sstream>
+

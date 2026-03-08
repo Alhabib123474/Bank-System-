@@ -1,12 +1,8 @@
 #include<iostream>
 #include<string>
 #include<cmath>
-#include <fstream>
-#include <sstream>
-#include"Person.h"
 #include"Admin.h"
-#include"Employee.h"
-#include"Client.h"
+#include"Parser.h"
 using namespace std;
 
 
@@ -14,9 +10,10 @@ int main()
 {
 
 
-cout << "Welcome to the Banking System!" << endl;
+cout << "Welcome to AKA Banking System!" << endl;
 
-
+Admin a = Parser::ParseTOAdmin("1005,yassen,0000,5000");
+a.display();
 
 
     return 0;

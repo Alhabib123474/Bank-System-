@@ -1,26 +1,52 @@
 #pragma once
-#include <iostream>
 #include <string>
-#include <fstream>
-#include <sstream>
-#include"Person.h"
-using namespace std;
-class Admin : public Person
-{
+#include"Employee.h"
+
+
+
+class Admin : public Person {
+
 private:
 	double salary;
-public:
-	Admin(string n, int i, string p, double s) :Person(n, i, p), salary(s) {}
 
-	void setSalary(double s)
-	{
-		if (salary >= 5000) {
-			salary = s;
-		}
-		else {
-			cout << "salary must be greater than 5000" << endl;
-		}
+public:
+
+    Admin():Person(){
+        salary = 0;
+
+    }
+
+	Admin(int i,string n, string p, double s) :Person(i, n, p), salary(s) {}
+
+	//======setters======//
+
+	void setid(int i){
+	    this->id = i;
+
 	}
+
+
+	void setname(string n){
+	    this->name = n;
+
+	}
+
+
+	void setpass(string p){
+	    this->password = p;
+	}
+
+
+	bool setsalary(double salary) {
+		if (salary >= 5000) {
+			this->salary = salary;
+			return true;
+		}
+		return false;
+	}
+
+
+
 	double getSalary()
 	{
 		return salary;
