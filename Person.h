@@ -1,8 +1,9 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include <fstream>
-#include <sstream>
+#include "vector"
+
+#include <Validation.h>
 using namespace std;
 
 class Person
@@ -17,37 +18,41 @@ public:
 		id = 0;
 }
 
-	Person(int i, string n,  string p) : id(i),name(n),  password(p){}
+	Person(int i, string n,  string p){
+	this-> id= i;
+	setname(n);
+	setpassword(p);
+
+
+	}
+
+
+//=====setters====//
+
+    void setid(int i)
+	{
+	    this->id = i;
+
+	}
+
+
 
 	void setname(string n)
 	{
-		if (name.length() >= 5 && name.length() <= 20) {
-
-			for(int i = 0; i < name.length(); i++)
-			{
-				char c = name[i];
-				if (!((c>='a'&&c<='z')||(c>='A'&&c<='Z'))) {
-					cout << "name must be characters only " << endl;
-					return;
-				}
-			}
-			name = n;
-		}
-		else {
-			cout << "name must be between 5 and 20 characters" << endl;
-		}
+	    if(Validation::validate_name(n)){
+           this->name = n;
+	    }
 	}
+
 
 	void setpassword(string p)
 	{
-		if (password.length() >= 8 && password.length() <= 20)
-		{
-			password = p;
-		}
-		else {
-			cout << "password must be between 8 and 20 only " << endl;
-		}
+		if (Validation::validate_pass(p))
+		this->password = p;
 	}
+
+
+	//=========getters==========//
 	int getid()
 	{
 		return id;
@@ -60,6 +65,12 @@ public:
 	{
 		return password;
 	}
+
+
+
+//=======methods=====//
+
+
 	virtual void display()
 	{
 		cout << "name: " << name << endl;

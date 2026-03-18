@@ -1,6 +1,7 @@
 #pragma once
 #include"Person.h"
 
+
 class Client : public Person {
 private:
 	double balance;
@@ -13,43 +14,22 @@ public:
 
 
 
-	Client(int i, string n, string p, double b) :Person(i, n, p), balance(b) {}
+	Client(int i, string n, string p, double b) :Person(i, n, p) {
+	setBalance(b);
+	}
 
 
 
 //======setters====//
 
-
-
-	void setid(int i){
-	    this->id = i;
-
-	}
-
-
-	void setname(string n){
-	    this->name = n;
-
-	}
-
-
-	void setpass(string p){
-	    this->password = p;
-
-	}
-
 	void setBalance(double b)
 	{
-		if (b >= 1500) {
-			this->balance = b;
-		}
-		else {
-			cout << "balance must be greater than or equal to 1500" << endl;
-		}
+		if (Validation::validate_bal(b))
+            balance = b;
 	}
 
 
-
+//=======getters=====//
 
 
 
@@ -64,7 +44,7 @@ public:
 
 
 
-
+/*
  // ================= LOGIN =================
  static bool login_c(int client_id, string client_pass)
  {
@@ -105,9 +85,9 @@ public:
      cout << "Invalid ID or Password." << endl;
      return false;
  }
+*/
 
-
-//methods//
+//=========methods===========//
 
 	void deposit(double amount)
 	{
@@ -148,4 +128,10 @@ public:
 		cout << "balance: " << balance << endl;
 
 	}
+
+
 };
+static vector <Client> allClients;
+
+
+

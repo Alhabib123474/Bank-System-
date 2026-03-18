@@ -17,36 +17,32 @@ public:
     }
 
 
-	Employee(int i,string n, string p, double s) : Person(i, n, p), salary(s) {}
+	Employee(int i,string n, string p, double s) : Person(i, n, p) {
+	setsalary(s);
+	}
 
 
 
 //======setters======//
 
-	void setid(int i){
-	    this->id = i;
+
+
+	bool setsalary(double s) {
+		if (Validation::validate_sal(s))
+            this->salary = s;
 
 	}
 
 
-	void setname(string n){
-	    this->name = n;
 
-	}
+//=====getters======//
 
 
-	void setpass(string p){
-	    this->password = p;
-	}
 
 
-	bool setsalary(double salary) {
-		if (salary >= 5000) {
-			this->salary = salary;
-			return true;
-		}
-		return false;
-	}
+
+
+
 
 
 	double getSalary() {
@@ -329,3 +325,6 @@ void add_client(int cl_id,string cl_name,string cl_pass,double cl_bal){
 		cout << "Salary: " << salary << endl;
 	}
 };
+
+static vector<Employee> allEmployees;
+

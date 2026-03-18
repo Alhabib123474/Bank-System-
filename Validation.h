@@ -1,7 +1,9 @@
 #pragma once
-#include "Person.h"
+#include <iostream>
+#include <string>
+using namespace std;
 
-class Validation : Person
+class Validation
 {
 public:
 	static bool validate_name(string n)
@@ -34,7 +36,7 @@ public:
 					cout << "Password must be without spaces!" << endl;
 					return false;
 				}
-					
+
 			}
 
 			return true;
@@ -59,7 +61,7 @@ public:
 
 	static bool validate_sal(double s) {
 		if (s >= 5000) {
-			
+
 			return true;
 		}
 		cout << "Salary must be at least 5000." << endl;
