@@ -9,7 +9,7 @@ int main()
 
 
 
-cout << "Welcome to AKA Banking System!" << endl;
+cout << "Welcome to AKA Banking System!!" << endl;
 
 
 
