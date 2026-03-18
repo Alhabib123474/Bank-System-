@@ -1,10 +1,8 @@
 #pragma once
-#include <iostream>
-#include <string>
-#include "vector"
 
-#include <Validation.h>
-using namespace std;
+#include <vector>
+#include"Validation.h"
+
 
 class Person
 {

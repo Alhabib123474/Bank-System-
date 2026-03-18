@@ -55,7 +55,7 @@ class Fileshelper
       }
 
 
-    static void SaveEmployee(Admin a){
+    static void SaveAdmin(Admin a){
         fstream file(A_File_Path,ios::app);
 
         file<<a.getid()<<","<<a.getname()<<","<<a.getpassword()<<","<<a.getSalary()<<endl;
@@ -69,7 +69,7 @@ class Fileshelper
 
 
 
-    static void getAllClients(){
+    static void getClients(){
         fstream file(C_File_Path, ios::in);
 
         string line;
@@ -81,7 +81,7 @@ class Fileshelper
     }
 
 
-    static void getAllEmployees(){
+    static void getEmployees(){
         fstream file(E_File_Path, ios::in);
 
         string line;
@@ -92,7 +92,7 @@ class Fileshelper
 
     }
 
-  static void getAllAdmins(){
+    static void getAdmins(){
         fstream file(A_File_Path, ios::in);
 
         string line;
@@ -104,12 +104,12 @@ class Fileshelper
     }
 
 
- static void ClearFile(string filename,string lastidfile){
+    static void ClearFile(string filename,string lastidfile, int startid){
     fstream file;
     file.open(filename , ios::out);
     file.close();
     file.open(filename , ios::out);
-    file << "1000";
+    file << startid;
     file.close();
 
 
