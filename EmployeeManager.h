@@ -29,7 +29,7 @@ class EmployeeManager
 
     case 1:
         system("cls");
-        ClientOptions(client);
+        EmployeeOptions(employee);
         break;
 
     default:
