@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <limits>
 #include <string>
 using namespace std;
 
@@ -69,5 +70,106 @@ public:
 	}
 
 
+//===================================================================================//
+
+	static double getDoubleNumbers(string msg){
+	    double value;
+
+	    while(true){
+                cout<< msg <<endl;
+                cin>> value;
+
+	    }
+
+            if(cin.fail()){
+                cout<< "Invalid Input please enter valid number : "<<endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+            }
+
+            else{
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                return value;
+            }
+
+
+
+
+
+	}
+
+	static int getIntegerNumbers(string msg){
+	    int value;
+
+	    while(true){
+                cout<< msg <<endl;
+                cin>> value;
+
+	    }
+
+            if(cin.fail()){
+                cout<< "Invalid Input please enter valid number : "<<endl;
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+            }
+
+            else{
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                return value;
+            }
+
+
+
+
+
+	}
+
+//===================================================================================//
+
+
+static string EnterName(string msg){
+    string name;
+    do{
+       cout<<msg<<endl;
+       getline(cin,name);
+    }
+    while(!validate_name(name));
+    return name;
+}
+
+
+static string EnterPassword(string msg){
+    string pass;
+       do{
+       cout<<msg<<endl;
+       getline(cin,pass);
+    }
+    while(!validate_pass(pass));
+    return pass;
+}
+
+
+static double EnterBalance(string msg){
+    double balance;
+        do{
+       cout<<msg<<endl;
+       cin>>balance;
+    }
+    while(!validate_bal(balance));
+    return balance;
+}
+
+
+static double EnterSalary(string msg){
+    double sal;
+        do{
+       cout<<msg<<endl;
+       cin>>sal;
+    }
+    while(!validate_sal(sal));
+    return sal;
+}
 };
 

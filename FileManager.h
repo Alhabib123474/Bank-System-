@@ -7,7 +7,7 @@
 class FileManager : public DataSourceInterface
 {
   public:
-      //===============================//
+    //===============================//
     void  addClient(Client obj) {
       	Fileshelper::SaveClient(obj);
       	}
@@ -19,6 +19,31 @@ class FileManager : public DataSourceInterface
     void addAdmin(Admin obj){
         Fileshelper::SaveAdmin(obj);
     }
+
+    //===============================//
+    void  updateClients() {
+      	removeAllClients();
+
+      	 for(cIt = allClients.begin();cIt != allClients.end(); cIt++){
+                addClient(*cIt);
+                }
+      	}
+
+
+    void  updateEmployees() {
+         for(cIt = allEmployees.begin();eIt != allEmployees.end(); eIt++){
+                addEmployee(*eIt);
+
+    }
+
+
+    void updateAdmins()){
+         for(aIt = allAdmins.begin();aIt != allAdmins.end(); aIt++){
+                addAdmin(*aIt);
+
+        }
+
+
   //===============================//
 
     void getAllClients() {
