@@ -1,4 +1,5 @@
 #pragma once
+#include"ClientManager.h"
 
 class EmployeeManager
 {
@@ -6,16 +7,16 @@ class EmployeeManager
 
     system("cls");
     cout<<"(1) Display my info" <<endl;
-    cout<<"(2) Check Balance" <<endl;
-    cout<<"(3) Update Password" <<endl;
-    cout<<"(4) withdraw" <<endl;
-    cout<<"(5) Deposit" <<endl;
-    cout<<"(6) Transfer amount" <<endl;
+    cout<<"(2) update password" <<endl;
+    cout<<"(3) add new client" <<endl;
+    cout<<"(4) search for client" <<endl;
+    cout<<"(5) list all clients" <<endl;
+    cout<<"(6) Edit client" <<endl;
     cout<<"(7) Logout\n "<<endl;
 
     }
 
-    static void back_exit(Client* client){
+    static void back_exit(Employee* employee){
         int c;
 
         do{
@@ -47,8 +48,8 @@ class EmployeeManager
    public:
 
        static Employee* login(int id, string password){
-            for(eIt = allEmployees.begin();eIt != allClients.end(); eIt++){
-	        if(eIt->getid() == id && eIt->getpasssword() == password)
+            for(eIt = allEmployees.begin();eIt != allEmployees.end(); eIt++){
+	        if(eIt->getid() == id && eIt->getpassword() == password)
                 return &(*eIt);
                 }
                 return nullptr;
@@ -63,13 +64,13 @@ class EmployeeManager
 
            Client client;
            int id = Fileshelper::GetLast(C_File_ID_Path ) + 1;
-           Client.setid(id);
+           client.setid(id);
            client.setname(Validation::EnterName("Enter client name : "));
-           Client.setpassword(Validation::EnterPassword("Enter client password : "));
-           Client.setBalance(Validation::EnterBalance("Enter client balance : "));
+           client.setpassword(Validation::EnterPassword("Enter client password : "));
+           client.setBalance(Validation::EnterBalance("Enter client balance : "));
 
-           employee->addClient(Client);
-           FileManager::addClient(Client);
+           employee->addclient(client);
+           f.addClient(client);
            cout<<"Client added successfully"<<endl;
 
 }
@@ -88,12 +89,12 @@ class EmployeeManager
         static void searchForClient(Employee* employee){
 
             int id;
-            id = Validation::getIntegerNumbers("Enter client id: "):
+            id = Validation::getIntegerNumbers("Enter client id: ");
 
-            Client* client = employee->search_client(id);
+            Client* cl = employee->search_client(id);
 
-            if(client==nullptr) cout<<"Client not found!"<<endl;
-            else client->display();
+            if(cl==nullptr) cout<<"Client not found!"<<endl;
+            else cl->display();
 
 
         }
@@ -101,20 +102,20 @@ class EmployeeManager
 
         static void  editClientInfo(Employee* employee){
             int id;
-            id = Validation::getIntegerNumbers("Enter client id: "):
+            id = Validation::getIntegerNumbers("Enter client id: ");
 
-            Client* client = employee->search_client(id);
+            Client* cl = employee->search_client(id);
 
-            if(client!=nullptr){
+            if(cl!=nullptr){
             cout<<"======= update data ======="<<endl;
 
             string name = Validation::EnterName("Enter client name : ");
             string pass = Validation::EnterPassword("Enter client password : ");
             double balance = Validation::EnterBalance("Enter client balance : ");
 
-            employee->edit_client(client,name,pass,balance);
+            employee->edit_client(cl,name,pass,balance);
 
-             FileManager::updateClients();
+            f.updateClients();
 
              cout<<"Client data updated successfully"<<endl;
             }
@@ -134,7 +135,7 @@ class EmployeeManager
 
 
     static bool EmployeeOptions(Employee* employee){
-        printClientMenu();
+        printEmployeetMenu();
       int choice;
 
 
@@ -149,7 +150,7 @@ case 1:
 case 2://update password
     system("cls");
     ClientManager::updatePassword(employee);
-    FileManage::updateEmployees();
+    f.updateEmployees();
     break;
 case 3: //add new client
     system("cls");
@@ -161,24 +162,11 @@ case 4: //search for client
     break;
 case 5: //list all clients
     system("cls");
-    amount = Validation::getDoubleNumbers("Enter amount: ");
-    client->deposit(amount);
-    FileManager::updateClients();
+    listallClients(employee);
     break;
 case 6: //Edit client
     system("cls");
-    id = Validation::getIntegerNumbers("Enter recipient id: ");
-    client->transfer(amount);
-
-    recipient = e.search_client(id);
-    if(recipient){
-      amount = Validation::getDoubleNumbers("Enter amount: ");
-      client->transfer(*recipient, amount) ;
-    }
-    else{
-        cout<< "Account not found!" <<endl;
-    }
-
+    editClientInfo(employee);
     break;
 
 case 7: //logout

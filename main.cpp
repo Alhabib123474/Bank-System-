@@ -1,17 +1,13 @@
-#include<iostream>
-#include"Fileshelper.h"
+#include"Screens.h"
+
 using namespace std;
 
 
 int main()
 {
 
-
-
-
-cout << "Welcome to AKA Banking System!!" << endl;
-
+Screens::RunApp();
 
 
     return 0;
-}
+    }

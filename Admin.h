@@ -20,6 +20,25 @@ public:
 
 	}
 
+
+
+	//======setters======//
+
+
+
+	void setsalary(double s) {
+		if (Validation::validate_sal(s))
+            this->salary = s;
+
+	}
+
+
+
+
+
+
+
+
 // ================= Add clients =================
 
 void addclient(Client& client){
@@ -123,3 +142,4 @@ void addEmployee(Employee& employee){
 };
 
 static vector<Admin> allAdmins;
+static vector<Admin>::iterator aIt;

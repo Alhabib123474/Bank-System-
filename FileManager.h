@@ -31,15 +31,17 @@ class FileManager : public DataSourceInterface
 
 
     void  updateEmployees() {
-         for(cIt = allEmployees.begin();eIt != allEmployees.end(); eIt++){
+         for(eIt = allEmployees.begin();eIt != allEmployees.end(); eIt++){
                 addEmployee(*eIt);
+         }
 
     }
 
 
-    void updateAdmins()){
+    void updateAdmins(){
          for(aIt = allAdmins.begin();aIt != allAdmins.end(); aIt++){
                 addAdmin(*aIt);
+         }
 
         }
 
@@ -50,13 +52,21 @@ class FileManager : public DataSourceInterface
         Fileshelper::getClients();
     }
 
-	 void getAllEmployees() {
+     void getAllEmployees() {
 	     Fileshelper::getEmployees();
 	 }
 
 	 void getAllAdmins() {
 	     Fileshelper::getAdmins();
 	 }
+
+    void getAllData(){
+        getAllAdmins();
+        getAllEmployees();
+        getAllClients();
+
+    }
+
 
   //===============================//
 
@@ -68,7 +78,7 @@ class FileManager : public DataSourceInterface
 	      Fileshelper::ClearFile(E_File_Path,E_File_ID_Path, 100);
 	 }
 
-	 void removeAllAdmins() {
+	  void removeAllAdmins() {
 	     Fileshelper::ClearFile(A_File_Path,A_File_ID_Path, 1000);
 	 }
 

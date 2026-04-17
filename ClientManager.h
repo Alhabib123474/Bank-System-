@@ -1,6 +1,8 @@
 #pragma once
 #include"FileManager.h"
 
+FileManager f;
+
 class ClientManager
 {
     static void printClientMenu(){
@@ -49,7 +51,7 @@ public:
 
     static Client* login(int id, string password){
             for(cIt = allClients.begin();cIt != allClients.end(); cIt++){
-	        if(cIt->getid() == id && cIt->getpasssword() == password)
+	        if(cIt->getid() == id && cIt->getpassword() == password)
                 return &(*cIt);
                 }
                 return nullptr;
@@ -66,11 +68,11 @@ public:
             cout<< "Enter New password: ";
             cin>>newpass;
         }
-        while(!Validation::validate_pass(newpass)){
+        while(!Validation::validate_pass(newpass));
             person->setpassword(newpass);
             cout<< "Password Updated successfully" <<endl;
 
-        }
+
 
 
     }
@@ -104,27 +106,26 @@ case 2:
 case 3: //
     system("cls");
     updatePassword(client);
-    FileManager::updateClients();
+    f.updateClients();
     break;
 case 4: //withdraw
     system("cls");
     amount = Validation::getDoubleNumbers("Enter amount: ");
     client->withdraw(amount);
-     FileManager::updateClients();
+    f.updateClients();
     break;
 case 5: //deposit
     system("cls");
     amount = Validation::getDoubleNumbers("Enter amount: ");
     client->deposit(amount);
-    FileManager::updateClients();
+    f.updateClients();
     break;
 case 6: //transfer
     system("cls");
     id = Validation::getIntegerNumbers("Enter recipient id: ");
-    client->transfer(amount);
 
     recipient = e.search_client(id);
-    if(recipient){
+    if(recipient != nullptr){
       amount = Validation::getDoubleNumbers("Enter amount: ");
       client->transfer(*recipient, amount) ;
     }

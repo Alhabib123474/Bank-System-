@@ -25,7 +25,7 @@ public:
 
 
 
-	bool setsalary(double s) {
+	void setsalary(double s) {
 		if (Validation::validate_sal(s))
             this->salary = s;
 

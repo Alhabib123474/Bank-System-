@@ -73,58 +73,47 @@ public:
 //===================================================================================//
 
 	static double getDoubleNumbers(string msg){
-	    double value;
+    double value;
 
-	    while(true){
-                cout<< msg <<endl;
-                cin>> value;
+    while(true){
+        cout << msg << endl;
+        cin >> value;
 
-	    }
+        if(cin.fail()){
+            cout << "Invalid Input please enter valid number\n";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+        else{
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            return value;
+        }
+    }
+}
 
-            if(cin.fail()){
-                cout<< "Invalid Input please enter valid number : "<<endl;
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-            }
-
-            else{
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                return value;
-            }
-
-
-
-
-
-	}
-
-	static int getIntegerNumbers(string msg){
-	    int value;
-
-	    while(true){
-                cout<< msg <<endl;
-                cin>> value;
-
-	    }
-
-            if(cin.fail()){
-                cout<< "Invalid Input please enter valid number : "<<endl;
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-            }
-
-            else{
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                return value;
-            }
 
 
 
 
 
-	}
+	static int getIntegerNumbers(string msg){
+    int value;
+
+    while(true){
+        cout << msg << endl;
+        cin >> value;
+
+        if(cin.fail()){
+            cout << "Invalid Input please enter valid number\n";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+        else{
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            return value;
+        }
+    }
+}
 
 //===================================================================================//
 
@@ -133,6 +122,7 @@ static string EnterName(string msg){
     string name;
     do{
        cout<<msg<<endl;
+       cin.ignore(numeric_limits<streamsize>::max(), '\n');//
        getline(cin,name);
     }
     while(!validate_name(name));
@@ -144,6 +134,7 @@ static string EnterPassword(string msg){
     string pass;
        do{
        cout<<msg<<endl;
+       cin.ignore(numeric_limits<streamsize>::max(), '\n');//
        getline(cin,pass);
     }
     while(!validate_pass(pass));
