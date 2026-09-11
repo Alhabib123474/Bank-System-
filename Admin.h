@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include"Person.h"
 #include"Employee.h"
 
 
@@ -12,11 +13,12 @@ private:
 public:
 
     Admin():Employee(){
-        salary = 0;
+
 
     }
 
 	Admin(int i,string n, string p, double s) :Employee(i, n, p, s) {
+
 
 	}
 
@@ -26,11 +28,11 @@ public:
 
 
 
-	void setsalary(double s) {
-		if (Validation::validate_sal(s))
-            this->salary = s;
+	//void setsalary(double s) {
+		//if (Validation::validate_sal(s))
+            //this->salary = s;
 
-	}
+	//}
 
 
 

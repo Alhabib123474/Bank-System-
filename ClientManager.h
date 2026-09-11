@@ -20,6 +20,7 @@ class ClientManager
 
     static void back_exit(Client* client){
         int c;
+        cin >> c;
 
         do{
 

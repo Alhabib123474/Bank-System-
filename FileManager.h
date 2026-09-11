@@ -31,6 +31,7 @@ class FileManager : public DataSourceInterface
 
 
     void  updateEmployees() {
+        removeAllEmployees();
          for(eIt = allEmployees.begin();eIt != allEmployees.end(); eIt++){
                 addEmployee(*eIt);
          }
@@ -39,6 +40,7 @@ class FileManager : public DataSourceInterface
 
 
     void updateAdmins(){
+        removeAllAdmins();
          for(aIt = allAdmins.begin();aIt != allAdmins.end(); aIt++){
                 addAdmin(*aIt);
          }

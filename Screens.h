@@ -13,11 +13,11 @@
 
             cout<<"\n\n\n\n\n\n\n\n\n";
 
-            cout<< "\t\t\t\t           *   *              * * *             *     *   *   *  "<< endl;
-            cout<< "\t\t\t\t     *     *  *      *        *    *     *      * *   *   *  *   "<< endl;
-            cout<< "\t\t\t\t    * *    **       * *       * * *     * *     *  *  *   **     "<< endl;
-            cout<< "\t\t\t\t   * * *   *  *    * * *      *    *   * * *    *   * *   *  *   "<< endl;
-            cout<< "\t\t\t\t  *     *  *   *  *     *     * * *   *     *   *     *   *   *  "<< endl;
+            cout<< "\t\t\t           *   *              * * *             *     *   *   *  "<< endl;
+            cout<< "\t\t\t     *     *  *      *        *    *     *      * *   *   *  *   "<< endl;
+            cout<< "\t\t\t    * *    **       * *       * * *     * *     *  *  *   **     "<< endl;
+            cout<< "\t\t\t   * * *   *  *    * * *      *    *   * * *    *   * *   *  *   "<< endl;
+            cout<< "\t\t\t  *     *  *   *  *     *     * * *   *     *   *     *   *   *  "<< endl;
             sleep(2);
 
         }
@@ -30,12 +30,12 @@
             system("cls");
             cout<<"\n\n\n\n\n\n\n\n\n";
 
-            cout << "\t\t\t\t *       *  *******  *       *        ******   *        *  *******"<<endl;
-            cout << "\t\t\t\t *       *  *        *       *       *      *  * *    * *  *      "<<endl;
-            cout << "\t\t\t\t *   *   *  *****    *       *       *      *  *   **   *  *****  "<<endl;
-            cout << "\t\t\t\t *  * *  *  *        *       *       *      *  *        *  *      "<<endl;
-            cout << "\t\t\t\t * *   * *  *        *       *       *      *  *        *  *      "<<endl;
-            cout << "\t\t\t\t **     **  *******  ******* *******  ******   *        *  *******"<<endl;
+            cout << "\t\t\t *       *  *******  *       *        ******   *        *  *******"<<endl;
+            cout << "\t\t\t *       *  *        *       *       *      *  * *    * *  *      "<<endl;
+            cout << "\t\t\t *   *   *  *****    *       *       *      *  *   **   *  *****  "<<endl;
+            cout << "\t\t\t *  * *  *  *        *       *       *      *  *        *  *      "<<endl;
+            cout << "\t\t\t * *   * *  *        *       *       *      *  *        *  *      "<<endl;
+            cout << "\t\t\t **     **  *******  ******* *******  ******   *        *  *******"<<endl;
 
             sleep(1);
             system("cls");
@@ -87,53 +87,71 @@
 
 
     public:
-        static void LoginScreen(int c){
-            int choice = c, id;
-            string pass;
+      static void LoginScreen(int c){
+    int choice = c, id;
+    string pass;
 
+    id = Validation::getIntegerNumbers("Enter id:");
+    pass = Validation::EnterPassword("Enter Password:");
 
-            id = Validation::getIntegerNumbers("Enter id: ");
-            pass = Validation::EnterPassword("Enter Password:");
-
-
-            switch(choice)
-            {
-            case 1:
-                if(AdminManager::login(id,pass) != nullptr){
-                    while(AdminManager::AdminOptions(AdminManager::login(id,pass)) != false)
-                        Logout();
-                }
-                else Invalid(1);
-                break;
-
-            case 2:
-                if(EmployeeManager::login(id,pass) != nullptr){
-                    while(EmployeeManager::EmployeeOptions(EmployeeManager::login(id,pass)) != false)
-                        Logout();
-            }
-            else Invalid(2);
-            break;
-
-            case 3:
-                if(ClientManager::login(id,pass) != nullptr){
-                    while(ClientManager::ClientOptions(ClientManager::login(id,pass)) != false)
-                        Logout();
-                }
-                else Invalid(3);
-                break;
-            default:
-                system("cls");
-                LoginScreen(choice);
-
-            }
-
+    switch(choice)
+    {
+    case 1:
+    {
+       // auto admin = AdminManager::login(id, pass);
+       Admin* admin = AdminManager::login(id, pass);
+        if (admin != nullptr) {
+             while (AdminManager::AdminOptions(admin))
+             ;
+            //while (AdminManager::AdminOptions(admin) != false);
+            Logout();
         }
+        else Invalid(1);
+        break;
+    }
+
+    case 2:
+    {
+        auto employee = EmployeeManager::login(id, pass);
+        if (employee != nullptr) {
+            while (EmployeeManager::EmployeeOptions(employee) != false)
+                ;
+            Logout();
+        }
+        else Invalid(2);
+        break;
+    }
+
+    case 3:
+    {
+        auto client = ClientManager::login(id, pass);
+        if (client != nullptr) {
+            while (ClientManager::ClientOptions(client) != false)
+                ;
+            Logout();
+        }
+        else Invalid(3);
+        break;
+    }
+
+    default:
+        system("cls");
+        LoginScreen(LoginAs());
+        break;
+    }
+}
 
 
         static void RunApp(){
 
+
+
+            Fileshelper::getAdmins();
+            Fileshelper::getEmployees();
+            Fileshelper::getClients();
             //f.getAllData();
             Welcome();
+
             LoginScreen(LoginAs());
 
         }

@@ -34,6 +34,7 @@ public:
 
         vector<string> parts = split(line);
         Client c;
+         if(parts.size() < 4) return c;
         c.setid(stoi(parts[0]));
         c.setname(parts[1]);
         c.setpassword(parts [2]);
@@ -47,6 +48,7 @@ public:
 
         vector<string> parts = split(line);
         Employee e;
+         if(parts.size() < 4) return e;
         e.setid(stoi(parts[0]));
         e.setname(parts[1]);
         e.setpassword(parts [2]);
@@ -59,7 +61,10 @@ public:
     static Admin ParseTOAdmin(string line){
 
         vector<string> parts = split(line);
+
         Admin a;
+        if(parts.size() < 4) return a;
+
         a.setid(stoi(parts[0]));
         a.setname(parts[1]);
         a.setpassword(parts [2]);

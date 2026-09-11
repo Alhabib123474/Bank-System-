@@ -18,6 +18,7 @@ class EmployeeManager
 
     static void back_exit(Employee* employee){
         int c;
+        cin >> c;
 
         do{
 

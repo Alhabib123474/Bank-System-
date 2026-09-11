@@ -122,7 +122,7 @@ static string EnterName(string msg){
     string name;
     do{
        cout<<msg<<endl;
-       cin.ignore(numeric_limits<streamsize>::max(), '\n');//
+       //cin.ignore(numeric_limits<streamsize>::max(), '\n');//
        getline(cin,name);
     }
     while(!validate_name(name));
@@ -134,7 +134,6 @@ static string EnterPassword(string msg){
     string pass;
        do{
        cout<<msg<<endl;
-       cin.ignore(numeric_limits<streamsize>::max(), '\n');//
        getline(cin,pass);
     }
     while(!validate_pass(pass));

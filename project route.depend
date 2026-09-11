@@ -1,0 +1,60 @@
+# depslib dependency file v1.0
+1776444990 source:k:\project bank system\bank-system-\main.cpp
+	"Screens.h"
+
+1789153858 k:\project bank system\bank-system-\fileshelper.h
+	"Parser.h"
+	"fstream"
+
+1789154145 k:\project bank system\bank-system-\parser.h
+	"Employee.h"
+	"Admin.h"
+	"Client.h"
+	<sstream>
+
+1776279501 k:\project bank system\bank-system-\employee.h
+	"Client.h"
+
+1774298473 k:\project bank system\bank-system-\client.h
+	"Person.h"
+
+1773863476 k:\project bank system\bank-system-\person.h
+	<vector>
+	"Validation.h"
+
+1789156773 k:\project bank system\bank-system-\admin.h
+	<string>
+	"Person.h"
+	"Employee.h"
+
+1788981189 k:\project bank system\bank-system-\validation.h
+	<iostream>
+	<limits>
+	<string>
+
+1789154883 k:\project bank system\bank-system-\adminmanager.h
+	"EmployeeManager.h"
+
+1788982914 k:\project bank system\bank-system-\employeemanager.h
+	"ClientManager.h"
+
+1788982911 k:\project bank system\bank-system-\clientmanager.h
+	"FileManager.h"
+
+1789153301 k:\project bank system\bank-system-\filemanager.h
+	"DataSourceInterface.h"
+	"Fileshelper.h"
+
+1772285559 k:\project bank system\bank-system-\datasourceinterface.h
+	"Person.h"
+	"Client.h"
+	"Employee.h"
+	"Admin.h"
+
+1789156427 k:\project bank system\bank-system-\screens.h
+	"AdminManager.h"
+	<stdlib.h>
+	<chrono>
+	<thread>
+	<cstdlib>
+

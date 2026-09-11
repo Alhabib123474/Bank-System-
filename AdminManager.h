@@ -8,20 +8,17 @@ class AdminManager
     system("cls");
     cout<<"(1) Display my info" <<endl;
     cout<<"(2) update password" <<endl;
-    cout<<"(3) add new client" <<endl;
-    cout<<"(4) search for client" <<endl;
-    cout<<"(5) list all clients" <<endl;
-    cout<<"(6) Edit client" <<endl;
-    cout<<"(7) add new Employee" <<endl;
-    cout<<"(8) search for Employee" <<endl;
-    cout<<"(9) list all Employees" <<endl;
-    cout<<"(10) Edit Employee" <<endl;
-    cout<<"(11) Logout\n "<<endl;
+    cout<<"(3) add new Employee" <<endl;
+    cout<<"(4) search for Employee" <<endl;
+    cout<<"(5) list all Employees" <<endl;
+    cout<<"(6) Edit Employee" <<endl;
+    cout<<"(7) Logout\n "<<endl;
 
     }
 
     static void back_exit(Admin* admin){
         int c;
+        cin >> c;
 
         do{
 
@@ -51,16 +48,36 @@ class AdminManager
 
    public:
 
-       static Admin* login(int id, string password){
-            for(aIt = allAdmins.begin();aIt != allAdmins.end(); aIt++){
-	        if(aIt->getid() == id && aIt->getpassword() == password)
-                return &(*aIt);
-                }
-                return nullptr;
+      static Admin* login(int id, string password){
+    for(auto it = allAdmins.begin(); it != allAdmins.end(); ++it){
+        cout << "Stored: [" << it->getid() << "] [" << it->getpassword() << "]" << endl;
+        cout << "Entered: [" << id << "] [" << password << "]" << endl;
+        if(it->getid() == id && it->getpassword() == password)
+            return &(*it);
+    }
+    return nullptr;
+}
 
-        }
 
 
+
+
+static void updatePassword(Person* person){
+    string newpass = Validation::EnterPassword("Enter New password:");
+    person->setpassword(newpass);
+    cout << "Password Updated successfully" << endl;
+}
+ //static void updatePassword(Person* person){
+       // string newpass;
+        //do{
+           // cout<< "Enter New password: ";
+            //cin>>newpass;
+        //}
+       // while(!Validation::validate_pass(newpass));
+           // person->setpassword(newpass);
+           // cout<< "Password Updated successfully" <<endl;
+
+   // }
 
 
 
@@ -69,9 +86,9 @@ class AdminManager
            Employee emp;
            int id = Fileshelper::GetLast(E_File_ID_Path ) + 1;
            emp.setid(id);
-           emp.setname(Validation::EnterName("Enter admin name : "));
-           emp.setpassword(Validation::EnterPassword("Enter admin password : "));
-           emp.setsalary(Validation::EnterBalance("Enter admin salary : "));
+           emp.setname(Validation::EnterName("Enter Employee name : "));
+           emp.setpassword(Validation::EnterPassword("Enter Employee password : "));
+           emp.setsalary(Validation::EnterBalance("Enter Employee salary : "));
 
            admin->addEmployee(emp);
            f.addEmployee(emp);
@@ -152,7 +169,9 @@ case 1:
     break;
 case 2://update password
     system("cls");
-    ClientManager::updatePassword(admin);
+
+    updatePassword(admin);
+
     f.updateAdmins();
     break;
 case 3: //add new Employee
@@ -171,23 +190,6 @@ case 6: //Edit Employee
     system("cls");
     editEmployeeInfo(admin);
     break;
- case 7: //add new Employee
-    system("cls");
-    newEmployee(admin);
-    break;
-case 8: //search for Employee
-    system("cls");
-    searchForEmployee(admin);
-    break;
-case 9: //list all Employee
-    system("cls");
-    listallEmployees(admin);
-    break;
-case 10: //Edit Employee
-    system("cls");
-    editEmployeeInfo(admin);
-    break;
-
 case 11: //logout
     return false;
     break;

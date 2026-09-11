@@ -92,29 +92,29 @@ class Fileshelper
 
     }
 
-    static void getAdmins(){
-        fstream file(A_File_Path, ios::in);
+   static void getAdmins(){
+    fstream file(A_File_Path, ios::in);
 
-        string line;
-        while(getline(file,line)){
-            allAdmins.push_back(Parser::ParseTOAdmin(line));
-        }
-        file.close();
-
+    string line;
+    while(getline(file,line)){
+        if(line.empty()) continue;   // skip blank lines
+        allAdmins.push_back(Parser::ParseTOAdmin(line));
     }
-
-
-    static void ClearFile(string filename,string lastidfile, int startid){
-    fstream file;
-    file.open(filename , ios::out);
     file.close();
-    file.open(filename , ios::out);
+}
+
+
+
+
+      static void ClearFile(string filename, string lastidfile, int startid){
+    fstream file;
+    file.open(filename, ios::out);
+    file.close();
+
+    file.open(lastidfile, ios::out);
     file << startid;
     file.close();
-
-
-
-    }
+}
 
 
 };
