@@ -29,6 +29,11 @@ public:
 	}
 
 
+	void setBalanceRaw(double b)
+	{
+	balance = b;
+	}
+
 //=======getters=====//
 
 
@@ -44,39 +49,47 @@ public:
 //=========methods===========//
 
 	void deposit(double amount)
-	{
-		if (amount > 0) {
-			balance += amount;
-		}
-		else {
-			cout << "Deposit amount must be positive." << endl;
-		}
+{
+	while (amount <= 0) {
+		cout << "Invalid deposit amount. Try again." << endl;
+		amount = Validation::getDoubleNumbers("Enter amount: ");
 	}
+	balance += amount;
+	cout << "Amount deposited successfully" << endl;
+}
 
-	void withdraw(double amount)
-	{
-		if (amount > 0 && amount <= balance) {
-			balance -= amount;
-		}
-		else {
-			cout << "Invalid withdrawal amount." << endl;
-		}
-	}
 
-	void transfer(Client& recipient, double amount)
-	{
-		if (amount > 0 && amount <= balance) {
-			balance -= amount;
-			recipient.deposit(amount);
-		}
-		else {
-			cout << "Invalid transfer " << endl;
-		}
+
+void withdraw(double amount)
+{
+	while (amount <= 0 || amount > balance) {
+		cout << "Invalid withdraw amount. Try again." << endl;
+		amount = Validation::getDoubleNumbers("Enter amount: ");
 	}
+	balance -= amount;
+	cout << "Amount withdrawn successfully" << endl;
+}
+
+
+
+
+
+void transfer(Client& recipient, double amount)
+{
+	while (amount <= 0 || amount > balance) {
+		cout << "Invalid transfer amount. Try again." << endl;
+		amount = Validation::getDoubleNumbers("Enter amount: ");
+	}
+	balance -= amount;
+	recipient.deposit(amount);
+	cout << "Amount transferred successfully" << endl;
+}
+
 	void checkBalance()
 	{
 		cout << " balance: " << balance << endl;
 	}
+
 	void display()override
 	{
 		cout << "Client details: " << endl;

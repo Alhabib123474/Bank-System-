@@ -8,7 +8,7 @@
 class Admin : public Employee {
 
 private:
-	double salary;
+
 
 public:
 
@@ -133,15 +133,14 @@ void addEmployee(Employee& employee){
 
 
 
+void display() override
+{
+	cout << "Admin details: " << endl;
+	Person::display();
+	cout << "salary: " << getSalary() << endl;
+}
 
-	void display()override
-	{
-		cout << "Admin details: " << endl;
-		Person::display();
-		cout << "salary: " << salary << endl;
-	}
-
-};
+};   // <-- add this line back, closes the Admin class
 
 static vector<Admin> allAdmins;
 static vector<Admin>::iterator aIt;

@@ -18,35 +18,27 @@ class ClientManager
 
     }
 
-    static void back_exit(Client* client){
-        int c;
-        cin >> c;
+ static void back_exit(Client* client){
+    int c;
 
-        do{
+    do{
+        cout << "\n\n(1) Options\t\t(0) Exit\n";
+        c = Validation::getIntegerNumbers("Enter your choice: ");
 
-            cout<<"\n\n(1) Options\t\t(0) Exit\n";
-            switch(c){
-
-    case 0:
-        exit(0);
-        break;
-
-    case 1:
-        system("cls");
-        ClientOptions(client);
-        break;
-
-    default:
-        cout<<"Invalid!"<<endl;
-        break;
-
-    }
-        }while(c < 0 || c > 1);
-
-
-    }
-
-
+        switch(c){
+            case 0:
+                exit(0);
+                break;
+            case 1:
+                system("cls");
+                ClientOptions(client);
+                break;
+            default:
+                cout << "Invalid!" << endl;
+                break;
+        }
+    } while(c < 0 || c > 1);
+}
 
 public:
 
@@ -124,16 +116,16 @@ case 5: //deposit
 case 6: //transfer
     system("cls");
     id = Validation::getIntegerNumbers("Enter recipient id: ");
-
     recipient = e.search_client(id);
+
     if(recipient != nullptr){
       amount = Validation::getDoubleNumbers("Enter amount: ");
-      client->transfer(*recipient, amount) ;
+      client->transfer(*recipient, amount);
+      f.updateClients();   // <-- add this
     }
     else{
-        cout<< "Account not found!" <<endl;
+      cout << "Account not found!" << endl;
     }
-
     break;
 
 case 7: //logout

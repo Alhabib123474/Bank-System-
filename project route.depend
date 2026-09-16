@@ -6,39 +6,39 @@
 	"Parser.h"
 	"fstream"
 
-1789154145 k:\project bank system\bank-system-\parser.h
+1789496741 k:\project bank system\bank-system-\parser.h
 	"Employee.h"
 	"Admin.h"
 	"Client.h"
 	<sstream>
 
-1776279501 k:\project bank system\bank-system-\employee.h
+1789496741 k:\project bank system\bank-system-\employee.h
 	"Client.h"
 
-1774298473 k:\project bank system\bank-system-\client.h
+1789584030 k:\project bank system\bank-system-\client.h
 	"Person.h"
 
 1773863476 k:\project bank system\bank-system-\person.h
 	<vector>
 	"Validation.h"
 
-1789156773 k:\project bank system\bank-system-\admin.h
+1789585355 k:\project bank system\bank-system-\admin.h
 	<string>
 	"Person.h"
 	"Employee.h"
 
-1788981189 k:\project bank system\bank-system-\validation.h
+1789585050 k:\project bank system\bank-system-\validation.h
 	<iostream>
 	<limits>
 	<string>
 
-1789154883 k:\project bank system\bank-system-\adminmanager.h
+1789585050 k:\project bank system\bank-system-\adminmanager.h
 	"EmployeeManager.h"
 
-1788982914 k:\project bank system\bank-system-\employeemanager.h
+1789584820 k:\project bank system\bank-system-\employeemanager.h
 	"ClientManager.h"
 
-1788982911 k:\project bank system\bank-system-\clientmanager.h
+1789584820 k:\project bank system\bank-system-\clientmanager.h
 	"FileManager.h"
 
 1789153301 k:\project bank system\bank-system-\filemanager.h
@@ -51,7 +51,7 @@
 	"Employee.h"
 	"Admin.h"
 
-1789156427 k:\project bank system\bank-system-\screens.h
+1789585050 k:\project bank system\bank-system-\screens.h
 	"AdminManager.h"
 	<stdlib.h>
 	<chrono>

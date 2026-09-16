@@ -30,49 +30,38 @@ public:
 
 
 
-    static Client ParseTOClient(string line){
+ static Client ParseTOClient(string line){
+    vector<string> parts = split(line);
+    Client c;
+    if(parts.size() < 4) return c;
+    c.setid(stoi(parts[0]));
+    c.setname(parts[1]);
+    c.setpassword(parts[2]);
+    c.setBalanceRaw(stod(parts[3]));   //
+    return c;
+}
 
-        vector<string> parts = split(line);
-        Client c;
-         if(parts.size() < 4) return c;
-        c.setid(stoi(parts[0]));
-        c.setname(parts[1]);
-        c.setpassword(parts [2]);
-        c.setBalance(stod(parts[3]));
+static Employee ParseTOEmployee(string line){
+    vector<string> parts = split(line);
+    Employee e;
+    if(parts.size() < 4) return e;
+    e.setid(stoi(parts[0]));
+    e.setname(parts[1]);
+    e.setpassword(parts[2]);
+    e.setSalaryRaw(stod(parts[3]));   //
+    return e;
+}
 
-       return c;
-
-    }
-
-    static Employee ParseTOEmployee(string line){
-
-        vector<string> parts = split(line);
-        Employee e;
-         if(parts.size() < 4) return e;
-        e.setid(stoi(parts[0]));
-        e.setname(parts[1]);
-        e.setpassword(parts [2]);
-        e.setsalary(stod(parts[3]));
-
-       return e;
-
-    }
-
-    static Admin ParseTOAdmin(string line){
-
-        vector<string> parts = split(line);
-
-        Admin a;
-        if(parts.size() < 4) return a;
-
-        a.setid(stoi(parts[0]));
-        a.setname(parts[1]);
-        a.setpassword(parts [2]);
-        a.setsalary(stod(parts[3]));
-
-       return a;
-
-    }
+static Admin ParseTOAdmin(string line){
+    vector<string> parts = split(line);
+    Admin a;
+    if(parts.size() < 4) return a;
+    a.setid(stoi(parts[0]));
+    a.setname(parts[1]);
+    a.setpassword(parts[2]);
+    a.setSalaryRaw(stod(parts[3]));   //
+    return a;
+}
 
 
 

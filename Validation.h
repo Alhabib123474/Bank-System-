@@ -161,5 +161,13 @@ static double EnterSalary(string msg){
     while(!validate_sal(sal));
     return sal;
 }
+
+
+
+
+
+
+
+
 };
 

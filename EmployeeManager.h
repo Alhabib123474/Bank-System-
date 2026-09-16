@@ -16,35 +16,27 @@ class EmployeeManager
 
     }
 
-    static void back_exit(Employee* employee){
-        int c;
-        cin >> c;
+  static void back_exit(Employee* employee){
+    int c;
 
-        do{
+    do{
+        cout << "\n\n(1) Options\t\t(0) Exit\n";
+        c = Validation::getIntegerNumbers("Enter your choice: ");
 
-            cout<<"\n\n(1) Options\t\t(0) Exit\n";
-            switch(c){
-
-    case 0:
-        exit(0);
-        break;
-
-    case 1:
-        system("cls");
-        EmployeeOptions(employee);
-        break;
-
-    default:
-        cout<<"Invalid!"<<endl;
-        break;
-
-    }
-        }while(c < 0 || c > 1);
-
-
-    }
-
-
+        switch(c){
+            case 0:
+                exit(0);
+                break;
+            case 1:
+                system("cls");
+                EmployeeOptions(employee);
+                break;
+            default:
+                cout << "Invalid!" << endl;
+                break;
+        }
+    } while(c < 0 || c > 1);
+}
 
    public:
 

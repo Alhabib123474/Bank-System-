@@ -17,32 +17,26 @@ class AdminManager
     }
 
     static void back_exit(Admin* admin){
-        int c;
-        cin >> c;
+    int c;
 
-        do{
+    do{
+        cout << "\n\n(1) Options\t\t(0) Exit\n";
+        c = Validation::getIntegerNumbers("Enter your choice: ");
 
-            cout<<"\n\n(1) Options\t\t(0) Exit\n";
-            switch(c){
-
-    case 0:
-        exit(0);
-        break;
-
-    case 1:
-        system("cls");
-        AdminOptions(admin);
-        break;
-
-    default:
-        cout<<"Invalid!"<<endl;
-        break;
-
-    }
-        }while(c < 0 || c > 1);
-
-
-    }
+        switch(c){
+            case 0:
+                exit(0);
+                break;
+            case 1:
+                system("cls");
+                AdminOptions(admin);
+                break;
+            default:
+                cout << "Invalid!" << endl;
+                break;
+        }
+    } while(c < 0 || c > 1);
+}
 
 
 
@@ -110,7 +104,7 @@ static void updatePassword(Person* person){
         static void searchForEmployee(Admin* admin){
 
             int id;
-            id = Validation::getIntegerNumbers("Enter client id: ");
+            id = Validation::getIntegerNumbers("Enter employee id: ");
 
             Employee* emp = admin->search_employees(id);
 
@@ -166,22 +160,31 @@ static void updatePassword(Person* person){
 case 1:
     system("cls");
     admin->display();
+
     break;
+
 case 2://update password
     system("cls");
 
     updatePassword(admin);
-
     f.updateAdmins();
+
+
     break;
+
 case 3: //add new Employee
     system("cls");
     newEmployee(admin);
+
+
     break;
+
 case 4: //search for Employee
     system("cls");
     searchForEmployee(admin);
+
     break;
+
 case 5: //list all Employee
     system("cls");
     listallEmployees(admin);
@@ -189,7 +192,9 @@ case 5: //list all Employee
 case 6: //Edit Employee
     system("cls");
     editEmployeeInfo(admin);
+
     break;
+
 case 11: //logout
     return false;
     break;

@@ -31,6 +31,11 @@ public:
 
 	}
 
+	void setSalaryRaw(double s)
+	{
+	salary = s;
+	}
+
 
 
 //=====getters======//
