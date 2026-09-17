@@ -9,7 +9,7 @@ A console-based bank management system built in C++, simulating real-world banki
 - **Employee operations** — add, search, edit, and list client accounts.
 - **Admin operations** — manage employees in addition to full client management.
 - **Input validation** — dedicated validation layer for names, passwords, balances, salaries, and numeric input (rejects invalid types and out-of-range values).
-- **File-based persistence** — all client, employee, and admin data is saved to and loaded from text files, so data survives between program runs.
+- **File-based persistence** — all client, employee, and admin data is saved to and loaded from text files, so data survives between program runs. (All text files are located in the data folder).
 - **Menu navigation** — loop-safe menus with a "return to menu or exit" option after operations.
 
 ## Tech Stack
