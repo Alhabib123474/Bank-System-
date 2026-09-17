@@ -62,12 +62,6 @@ Building this project involved debugging several subtle real-world issues, inclu
 - Writing safe **input validation loops** that handle both invalid values and non-numeric input without hanging or looping infinitely.
 - Managing shared data structures (`vector`) accessed by pointer/reference across multiple classes to keep in-memory state and file state in sync.
 
-## Future Improvements
-
-- Migrate file-based storage to a proper database (SQLite or similar).
-- Add transaction history logging per client.
-- Add unit tests for validation and core banking logic.
-
 ## License
 
 This project is open source and available under the [MIT License](LICENSE).
